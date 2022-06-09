@@ -13,6 +13,7 @@ function checkLength(text, max = 140) {
   if (text.length < max) {
     return true;
   }
+  return false;
 }
 
 // alert(checkLength("Чебурашка", 140));
