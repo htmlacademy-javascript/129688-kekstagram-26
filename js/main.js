@@ -32,7 +32,7 @@ function getRandomPositiveInteger (a, b) {
 function checkStringLength (string, length) {
   return string.length <= length;
 }
-
+checkStringLength ('yo', 2);
 
 //для начала замутим массив случайных значений от
 /*
@@ -74,9 +74,8 @@ const makeArrayNumbers = (length) => {
 //замутим массив с помощью функции
 const myArray = makeArrayNumbers(25);
 
-
-
 //чужой кодец, это просто выворот мозгов, хуже чем ..вно-год.
+
 /*
 const getRandomArrayUniqueNumbers = (minNumber, maxNumber) => {
   const arrayNumber = [];
@@ -96,48 +95,6 @@ const getRandomArrayUniqueNumbers = (minNumber, maxNumber) => {
 
 //console.log(myArray);
 //console.log(ID);
-
-
-
-
-const createWizard = () => {
-  const ID  = myArray.pop();
-  //число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться
-  //url, строка — адрес картинки вида photos/{{i}}.jpg,
-  // где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
-  const URL = `photos/${ID}.jpg`;
-
-
-  //description, строка — описание фотографии. Описание придумайте самостоятельно.
-  const DESCRIPTION = 'Описание придумал самостоятельно и так у каждой фотки, совпадение?';
-
-  //likes, число — количество лайков, поставленных фотографии. Случайное число от 15 до 200.
-  const likes = getRandomPositiveInteger (15, 200);
-
-  // let comments = [
-  //   {
-  //     id: ID,
-  //     avatar: 'img/avatar-6.svg',
-  //     message: 'В целом всё неплохо. Но не всё.',
-  //     name: 'Артём',
-  //   }
-  // ];
-
-  return {
-    id: ID,
-    url: URL,
-    description: DESCRIPTION,
-    likes: likes,
-    comments: createComments(),
-  };
-};
-
-
-// console.log(
-//   createWizard()
-// );
-
-
 
 //функция создания комментов
 const createComments = () => {
@@ -179,11 +136,48 @@ const createComments = () => {
 };
 
 
+const createPhoto = () => {
+  const ID  = myArray.pop();
+  //число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться
+  //url, строка — адрес картинки вида photos/{{i}}.jpg,
+  // где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
+  const URL = `photos/${ID}.jpg`;
+
+
+  //description, строка — описание фотографии. Описание придумайте самостоятельно.
+  const DESCRIPTION = 'Описание придумал самостоятельно и так у каждой фотки, совпадение?';
+
+  //likes, число — количество лайков, поставленных фотографии. Случайное число от 15 до 200.
+  const likes = getRandomPositiveInteger (15, 200);
+
+  // let comments = [
+  //   {
+  //     id: ID,
+  //     avatar: 'img/avatar-6.svg',
+  //     message: 'В целом всё неплохо. Но не всё.',
+  //     name: 'Артём',
+  //   }
+  // ];
+
+  return {
+    id: ID,
+    url: URL,
+    description: DESCRIPTION,
+    likes: likes,
+    comments: createComments(),
+  };
+};
+
+
+// console.log(
+//   createWizard()
+// );
+
 /*Прелесть метода .from() в том, что вторым аргументом ему можно передать функцию,
  результатами выполнения которой метод наполнит массив вместо undefined.
 
 Передадим по ссылке нашу функцию createWizard,
  и метод .from() заполнит вновь созданный массив объектами с описанием волшебников.
  */
-const similarWizards = Array.from({length: 2}, createWizard);
-console.log(similarWizards);
+const createPhotoPack = Array.from({length: 25}, createPhoto);
+//console.log(createPhotoPack);
